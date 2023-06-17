@@ -36,6 +36,7 @@ public class IndexModel : PageModel
 	{
 		string fff = "address not found";
 
+		// https://gis.cookcountyil.gov/traditional/rest/services/AddressLocator/addressPtMuniZip/GeocodeServer/findAddressCandidates?Street=4127%20n%20tripp%20ave&f=json
 
 		if (!string.IsNullOrWhiteSpace(StreetAddress))
 		{
