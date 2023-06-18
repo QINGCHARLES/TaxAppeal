@@ -7,7 +7,7 @@ Type=notify
 WorkingDirectory=/srv/web/TaxAppeal
 # systemd will run this executable to start the service
 # if /usr/bin/dotnet doesn't work, use `which dotnet` to find correct dotnet executable path
-ExecStart=/usr/bin/dotnet /srv/web/TaxAppeal.dll
+ExecStart=/usr/bin/dotnet /srv/web/TaxAppeal/TaxAppeal.dll
 # to query logs using journalctl, set a logical name here  
 SyslogIdentifier=TaxAppeal
 
