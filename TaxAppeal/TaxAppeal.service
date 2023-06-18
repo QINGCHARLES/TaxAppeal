@@ -2,6 +2,7 @@
 Description=ASP.NET Core web template
 
 [Service]
+Type=notify
 # will set the Current Working Directory (CWD)
 WorkingDirectory=/srv/web/TaxAppeal
 # systemd will run this executable to start the service
