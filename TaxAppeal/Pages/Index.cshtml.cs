@@ -74,7 +74,9 @@ public class IndexModel : PageModel
 				// this call converts an x/y coord to a property PIN
 				GisPin? JsonGisPin = await client.GetFromJsonAsync<GisPin>($"traditional/rest/services/cookVwrDynmc/MapServer/44/query?where=&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry={JsonAddress.candidates[0].location!.x.ToString()}%2C{JsonAddress.candidates[0].location!.y.ToString()}&geometryType=esriGeometryPoint&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=PIN14&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&featureEncoding=esriDefault&f=pjson");
 
-				fff = "Your property PIN is: " + JsonGisPin!.features![0].attributes!.PIN14!;
+				return Redirect($"/step-two?pin={JsonGisPin!.features![0].attributes!.PIN14!}");
+
+				//fff = "Your property PIN is: " + JsonGisPin!.features![0].attributes!.PIN14!;
 			}
 
 
