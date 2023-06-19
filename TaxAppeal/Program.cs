@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using TaxAppeal.Data;
 
@@ -30,6 +31,37 @@ else
 	app.UseHsts();
 }
 
+using (TextReader sr = new StringReader(@$"
+		<rewrite>
+			<rules>
+				<clear />
+				<rule enabled=""true"" stopProcessing=""true"">
+					<match url=""(.*)"" />
+					<conditions logicalGrouping=""MatchAll"" trackAllCaptures=""false"">
+						<add input=""{{HTTPS}}"" pattern=""^OFF$"" />
+					</conditions>
+					<action type=""Redirect"" url=""https://{{HTTP_HOST}}{{REQUEST_URI}}"" appendQueryString=""false"" redirectType=""308"" />
+				</rule>
+				<rule enabled=""true"">
+					<match url=""(.*)"" />
+					<conditions logicalGrouping=""MatchAll"" trackAllCaptures=""false"">
+						<add input=""{{HTTP_HOST}}"" pattern=""^cookcountypropertytaxappeal\.com$|^localhost"" negate=""true"" />
+					</conditions>
+					<action type=""Redirect"" url=""https://cookcountypropertytaxappeal.com/{{R:1}}"" redirectType=""308"" />
+				</rule>
+				<rule enabled=""true"">
+					<match url=""^about-us"" />
+					<action type=""Rewrite"" url=""https://{{HTTP_HOST}}/AboutUs"" />
+				</rule>
+			</rules>
+		</rewrite>
+	"))
+{
+	var options = new RewriteOptions()
+			.AddIISUrlRewrite(sr);
+
+	app.UseRewriter(options);
+}
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
