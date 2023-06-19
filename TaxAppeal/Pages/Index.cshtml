@@ -3,7 +3,6 @@
 @{
 	ViewData["Title"] = "Tax Appeal";
 }
-
 <div class="text-center">
 	<h1 class="fdisplay-4">Take the First Step Towards<br />Your Property Tax Assessment Appeal</h1>
 	<br />
@@ -12,4 +11,36 @@
 		<input asp-for="StreetAddress" />
 		<input type="submit" />
 	</form>
+
+    <script>
+
+        window.addEventListener('DOMContentLoaded', function () {
+            // 'local' is the 'id' of input element
+            new Autocomplete('StreetAddress', {
+                onSearch: ({ currentValue }) => {
+                    // local data
+                    const data = [
+                        { name: 'Walter White' },
+                        { name: 'Jesse Pinkman' },
+                        { name: 'Skyler White' },
+                        { name: 'Walter White Jr.' },
+                    ];
+                    return data
+                        .sort((a, b) => a.name.localeCompare(b.name))
+                        .filter((element) => {
+                            return element.name.match(new RegExp(currentValue, 'i'));
+                        });
+                },
+
+                onResults: ({ matches }) => {
+                    return matches
+                        .map((el) => {
+                            return `
+                    <li>${el.name}</li>`;
+                        })
+                        .join('');
+                },
+            });
+        });
+    </script>
 </div>
