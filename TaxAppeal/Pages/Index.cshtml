@@ -8,11 +8,54 @@
 	<br />
 	<form method="post">
 		<label asp-for="StreetAddress">Enter the first line of your street address:</label><br />
-		<input asp-for="StreetAddress" />
+		<input asp-for="StreetAddress" autocomplete="off" />
+        <ul id="Suggestions"></ul>
 		<input type="submit" />
 	</form>
 
-    <script>
+
+    <script type="text/javascript">
+        //const searchinput = document.getElementById('StreetAddress');
+
+        //const url = '/api:find-address';
+
+        //const results = [];
+
+        //function fff(){
+        //    console.log(this.value);
+        //fetch(url)
+        //.then(blob => blob.json())
+        //.then(data => console.log(results.push(...data)));
+        //}
+
+        //searchinput.addEventListener('change', fff);
+
+
+        document.getElementById('StreetAddress').addEventListener('input', function (e) {
+            const suggestions = document.getElementById('Suggestions');
+            const input = e.target.value;
+            if (input.length > 2) {
+                fetch('/api:find-address?query=' + input)
+                    .then(response => response.json())
+                    .then(data => {
+                        
+                        suggestions.innerHTML = '';
+                        data.forEach(item => {
+                            const li = document.createElement('li');
+                            li.textContent = item;
+                            suggestions.appendChild(li);
+                        });
+                    });
+            }
+            else
+            {
+                suggestions.innerHTML = '';
+            }
+        });
+
+    </script>
+
+   @* <script>
 
         window.addEventListener('DOMContentLoaded', function () {
             // 'local' is the 'id' of input element
@@ -42,5 +85,5 @@
                 },
             });
         });
-    </script>
+    </script>*@
 </div>

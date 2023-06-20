@@ -1,7 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Rewrite;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using System.Web;
 using TaxAppeal.Data;
+using TaxAppeal.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,11 +13,11 @@ builder.Host.UseSystemd();
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-	options.UseSqlServer(connectionString));
+    options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-	.AddEntityFrameworkStores<ApplicationDbContext>();
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
@@ -22,13 +25,13 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-	app.UseMigrationsEndPoint();
+    app.UseMigrationsEndPoint();
 }
 else
 {
-	app.UseExceptionHandler("/Error");
-	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-	app.UseHsts();
+    app.UseExceptionHandler("/Error");
+    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
 }
 
 using (TextReader sr = new StringReader(@$"
@@ -61,10 +64,10 @@ using (TextReader sr = new StringReader(@$"
 		</rewrite>
 	"))
 {
-	var options = new RewriteOptions()
-			.AddIISUrlRewrite(sr);
+    var options = new RewriteOptions()
+            .AddIISUrlRewrite(sr);
 
-	app.UseRewriter(options);
+    app.UseRewriter(options);
 }
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -72,7 +75,41 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
 app.MapRazorPages();
 
+var summaries = new[]
+{
+    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+};
+
+app.MapGet("/api:find-address", async (string query) =>
+{
+    using HttpClient client = new()
+    {
+        BaseAddress = new Uri("https://gis.cookcountyil.gov")
+    };
+
+	try
+	{
+        GisAddressPin? JsonAddress = await client.GetFromJsonAsync<GisAddressPin>($"/traditional/rest/services/AddressLocator/addressPtMuniZip/GeocodeServer/findAddressCandidates?Street={HttpUtility.UrlEncode(query)}&f=json");
+        string ffff = "";
+        if (JsonAddress != null && JsonAddress.candidates != null && JsonAddress.candidates.Count > 0 && !String.IsNullOrEmpty(JsonAddress.candidates[0].address))
+        {
+            ffff = JsonAddress.candidates[0].address!;
+        }
+        return new string[] { ffff };
+    }
+    catch (Exception e)
+	{
+        return new string[] { e.ToString() };
+    }
+   
+
+});
+
 app.Run();
+
+internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
+{
+    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+}
