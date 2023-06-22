@@ -95,10 +95,10 @@ public class IndexModel : PageModel
 
 					}
 
-					return Content(ff);
+					//return Content(ff);
 				}
 
-				//return Redirect($"/step-two?pin={JsonGisPin!.features![0].attributes!.PIN14!}");
+				return Redirect($"/step-two?pin={JsonGisPin!.features![0].attributes!.PIN14!}");
 
 				//fff = "Your property PIN is: " + JsonGisPin!.features![0].attributes!.PIN14!;
 			}

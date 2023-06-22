@@ -1,5 +1,7 @@
 ﻿namespace TaxAppeal.Models
 {
+
+
 	public class Candidate
 	{
 		public string? address { get; set; }
@@ -63,6 +65,7 @@
 		public object? PARCELTYPE { get; set; }
 		public string? Address { get; set; }
 		public string? City { get; set; }
+		public string? Zip_Code { get; set; }
 		public string? Town { get; set; }
 		public string? NBHD { get; set; }
 		public string? TotalValue { get; set; }
@@ -121,6 +124,19 @@
 		public List<Field>? fields { get; set; }
 		public List<Feature>? features { get; set; }
 	}
+
+
+	
+	public class AddressConfirmation
+	{
+		public string? displayFieldName { get; set; }
+		public FieldAliases? fieldAliases { get; set; }
+		public string? geometryType { get; set; }
+		public SpatialReference? spatialReference { get; set; }
+		public List<Field>? fields { get; set; }
+		public List<Feature>? features { get; set; }
+	}
+
 
 
 
