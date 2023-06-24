@@ -7,10 +7,13 @@
 	<h1 class="fdisplay-4">Take the First Step Towards<br />Your Property Tax Assessment Appeal</h1>
 	<br />
 	<form method="post">
-		<label asp-for="StreetAddress">Enter the first line of your street address:</label><br />
-		<input asp-for="StreetAddress" autocomplete="off" />
+		<label asp-for="StreetAddress">Enter the first line of your street address:</label><br /><br /><br />
+		<input asp-for="StreetAddress" autocomplete="off" placeholder="e.g. 4128 N Tripp Ave" />
+    
+		<button type="submit">Start >></button>
+
+        <datalist></datalist>
         <ul id="Suggestions"></ul>
-		<input type="submit" />
 	</form>
 
 

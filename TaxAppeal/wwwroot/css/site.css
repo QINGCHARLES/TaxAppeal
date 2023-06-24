@@ -37,9 +37,21 @@ header
 
 #StreetAddress
 {
-	padding: calc((4em - (1em * 1.5) - (0.125em * 2)) / 2) calc(1em * 1.5);
-	font-size: 3rem !important;
+	fpadding: calc((3rem - (1rem * 1.5) - (0.125rem * 2)) / 2) calc(1rem * 1.5);
+	padding: 1rem 3rem;
+	font-size: 1.5rem !important;
+	border-radius: .75rem;
+	width: 35rem;
+	font-weight: bold;
+	border-style: solid;
+	border-width: 0.3rem;
+	border-color: #99b;
 }
+
+	#StreetAddress::placeholder
+	{ /* Chrome, Firefox, Opera, Safari 10.1+ */
+		color: #bbb;
+	}
 
 .navbar-brand, h1
 {
@@ -47,29 +59,40 @@ header
 	font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,segoe ui,Roboto,helvetica neue,Arial,noto sans,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol,noto color emoji;
 }
 
-label, input[type=button], input[type=submit]
+h1
+{
+	text-transform: uppercase;
+}
+label, input[type=button], input[type=submit], button
 {
 	font-weight: bold;
+	font-size: 1.5rem;
 }
 
-.stars-bg
-{
-	width: 100%;
-	height: min(130vh, 1200px);
-	position: absolute;
-	top: 0;
-	left: 0;
-	/* pointer-events: none; */
-	overflow: hidden;
-	z-index: -1;
-	background-image: radial-gradient(100% 106% at 50% 171%, #FFFFFF 0%, #000121 100%);
-	background-image: radial-gradient(100% 106% at 51% 176%, rgba(255, 255, 255, 1) 0.4%, rgba(6, 6, 30, 1) 100%);
-	background-image: linear-gradient(180deg, #010103 38.4%, #00107D 59.9%, #3174B1 74.3%, #AAB2BC 85.1%, #BEB3BD 93.8%, #BBADB8 100%);
-	background-image: radial-gradient(100% 100% at 50% 0%, rgba(13, 13, 38, 1) 48.71%, rgba(51, 71, 100, 1) 100%);
-	background-image: linear-gradient(0deg, #DEDEDE 5.3%, #DEDEDE 20.1%, #59A3BD 30.5%, #1C4460 50%, #0B1117 70%); /* 3 */
-	background-image: radial-gradient(147% 89% at 50% 89%, #DEDEDE 5.3%, #DEDEDE 20.1%, #59A3BD 30.5%, #1C4460 50%, #0B1117 70%); /* 1 */
-	background-image: radial-gradient(147% 114% at 50% 103%, #DEDEDE 5.3%, #DEDEDE 20.1%, #59A3BD 30.5%, #1C4460 50%, #0B1117 70%); /* 2 */
-}
+	input[type=button], input[type=submit], button
+	{
+		border-radius: .75rem;
+		padding: 1rem 3rem;
+	}
+
+	.stars-bg
+	{
+		width: 100%;
+		height: min(130vh, 1200px);
+		position: absolute;
+		top: 0;
+		left: 0;
+		/* pointer-events: none; */
+		overflow: hidden;
+		z-index: -1;
+		background-image: radial-gradient(100% 106% at 50% 171%, #FFFFFF 0%, #000121 100%);
+		background-image: radial-gradient(100% 106% at 51% 176%, rgba(255, 255, 255, 1) 0.4%, rgba(6, 6, 30, 1) 100%);
+		background-image: linear-gradient(180deg, #010103 38.4%, #00107D 59.9%, #3174B1 74.3%, #AAB2BC 85.1%, #BEB3BD 93.8%, #BBADB8 100%);
+		background-image: radial-gradient(100% 100% at 50% 0%, rgba(13, 13, 38, 1) 48.71%, rgba(51, 71, 100, 1) 100%);
+		background-image: linear-gradient(0deg, #DEDEDE 5.3%, #DEDEDE 20.1%, #59A3BD 30.5%, #1C4460 50%, #0B1117 70%); /* 3 */
+		background-image: radial-gradient(147% 89% at 50% 89%, #DEDEDE 5.3%, #DEDEDE 20.1%, #59A3BD 30.5%, #1C4460 50%, #0B1117 70%); /* 1 */
+		background-image: radial-gradient(147% 114% at 50% 103%, #DEDEDE 5.3%, #DEDEDE 20.1%, #59A3BD 30.5%, #1C4460 50%, #0B1117 70%); /* 2 */
+	}
 
 	.stars-bg:after
 	{
