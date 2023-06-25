@@ -53,6 +53,10 @@ using (TextReader sr = new StringReader(@$"
 					<action type=""Redirect"" url=""https://cookcountypropertytaxappeal.com/{{R:1}}"" redirectType=""308"" />
 				</rule>
 				<rule enabled=""true"">
+					<match url=""^step-three"" />
+					<action type=""Rewrite"" url=""https://{{HTTP_HOST}}/StepThree"" />
+				</rule>
+				<rule enabled=""true"">
 					<match url=""^step-two"" />
 					<action type=""Rewrite"" url=""https://{{HTTP_HOST}}/StepTwo"" />
 				</rule>

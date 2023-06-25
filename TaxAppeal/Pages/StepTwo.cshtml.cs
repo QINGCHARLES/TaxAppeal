@@ -17,6 +17,16 @@ public class StepTwoModel : PageModel
 	public string? City { get; set; }
 	public string? ZipCode { get; set; }
 
+	public IActionResult OnPostCancel()
+	{
+		return Redirect("/");
+	}
+
+	public IActionResult OnPostConfirm()
+	{
+		return Redirect($"/step-three");
+	}
+
 	public async Task<IActionResult> OnGetAsync()
 	{
 		using HttpClient client = new()
