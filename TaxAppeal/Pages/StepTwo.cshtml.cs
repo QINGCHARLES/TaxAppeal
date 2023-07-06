@@ -5,6 +5,7 @@ using System.Net.NetworkInformation;
 using System.Net;
 using System.Web;
 using TaxAppeal.Models;
+using System.Text;
 
 namespace TaxAppeal.Pages;
 
@@ -27,8 +28,22 @@ public class StepTwoModel : PageModel
 		return Redirect($"/step-three");
 	}
 
+	public string DecodeUrlString(string str)
+	{
+		str = str.Replace('-', '+').Replace('_', '/');
+		int mod4 = str.Length % 4;
+		if (mod4 > 0)
+		{
+			str += new string('=', 4 - mod4);
+		}
+		byte[] base64Array = Convert.FromBase64String(str);
+		return Encoding.UTF8.GetString(base64Array);
+	}
+
 	public async Task<IActionResult> OnGetAsync()
 	{
+		StreetAddress = DecodeUrlString(HttpContext.Request.QueryString.ToString().Replace("?",""));
+
 		using HttpClient client = new()
 		{
 			BaseAddress = new Uri("https://gis.cookcountyil.gov")
@@ -48,7 +63,7 @@ public class StepTwoModel : PageModel
 			string ff = "";
 			foreach (Feature feature in JsonAddressConfirmation.features!)
 			{
-				StreetAddress = feature.attributes!.Address;
+				StreetAddress += feature.attributes!.Address;
 				City = feature.attributes!.City;
 				ZipCode = feature.attributes!.Zip_Code;
 			}

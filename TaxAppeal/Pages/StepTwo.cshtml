@@ -3,7 +3,7 @@
 @{
 }
 <h1>Is this your address?</h1>
-<h2>@Model.StreetAddress<br />@Model.City, IL @Model.ZipCode</h2>
+<h2>@Model.StreetAddress<br />@*@Model.City, IL @Model.ZipCode*@</h2>
 <form method="post">
 	<button asp-page-handler="Cancel"><< No</button><button asp-page-handler="Confirm">Yes >></button>
 </form>

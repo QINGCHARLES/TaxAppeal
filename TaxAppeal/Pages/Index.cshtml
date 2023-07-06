@@ -4,89 +4,119 @@
 	ViewData["Title"] = "Tax Appeal";
 }
 <div class="text-center">
+	<span id="logo">
+		<svg fill="#fff" width="80px" height="80px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+			<path d="M30.814 13.051l-14.001-12c-0.217-0.187-0.502-0.3-0.813-0.3s-0.596 0.114-0.815 0.302l0.002-0.001-14 12c-0.268 0.23-0.437 0.57-0.437 0.948 0 0 0 0.001 0 0.001v-0 16c0 0.69 0.56 1.25 1.25 1.25h28c0.69-0.001 1.249-0.56 1.25-1.25v-16c-0-0.379-0.168-0.718-0.434-0.948l-0.002-0.001zM28.75 28.75h-25.5v-14.175l12.75-10.929 12.75 10.929zM10.23 13.689c-0.846 0.816-1.371 1.96-1.371 3.227 0 1.306 0.559 2.482 1.451 3.302l0.003 0.003 4.682 5.191c0.23 0.254 0.561 0.412 0.929 0.412s0.699-0.159 0.928-0.411l0.001-0.001 4.661-5.17c0.994-0.857 1.62-2.117 1.62-3.524 0-1.258-0.5-2.399-1.313-3.235l0.001 0.001c-0.817-0.812-1.943-1.314-3.187-1.314-1.028 0-1.975 0.343-2.735 0.92l0.011-0.008c-0.696-0.472-1.554-0.754-2.478-0.754-1.257 0-2.393 0.522-3.202 1.36l-0.001 0.001zM16.808 15.584c0.382-0.575 1.027-0.949 1.759-0.949 1.162 0 2.105 0.942 2.105 2.105 0 0.733-0.375 1.378-0.943 1.755l-0.008 0.005-0.043 0.045-3.754 4.162-3.798-4.209c-0.46-0.408-0.75-0.999-0.755-1.657v-0.001c0.030-0.544 0.264-1.028 0.627-1.382l0-0c0.365-0.378 0.872-0.617 1.435-0.63l0.002-0c0.639 0.025 1.207 0.312 1.603 0.755l0.002 0.002c0.226 0.226 0.539 0.366 0.884 0.366s0.658-0.14 0.884-0.366v0z"></path>
+		</svg>
+	</span>
 	<h1 class="fdisplay-4">Take the First Step Towards<br />Your Property Tax Assessment Appeal</h1>
 	<br />
 	<form method="post">
-		<label asp-for="StreetAddress">Enter the first line of your street address:</label><br /><br /><br />
+		<label asp-for="StreetAddress">Enter the first line of your street address:</label><br /><br />
 		<input asp-for="StreetAddress" autocomplete="off" placeholder="e.g. 4128 N Tripp Ave" />
-    
-		<button type="submit">Start >></button>
+		<div id="sug"><ul id="Suggestions"></ul></div>
 
-        <datalist></datalist>
-        <ul id="Suggestions"></ul>
+		@*<button type="submit">Start >></button>*@
+
+		<datalist></datalist>
+
 	</form>
 
 
-    <script type="text/javascript">
-        //const searchinput = document.getElementById('StreetAddress');
+	<script type="text/javascript">
+		//const searchinput = document.getElementById('StreetAddress');
 
-        //const url = '/api:find-address';
+		//const url = '/api:find-address';
 
-        //const results = [];
+		//const results = [];
 
-        //function fff(){
-        //    console.log(this.value);
-        //fetch(url)
-        //.then(blob => blob.json())
-        //.then(data => console.log(results.push(...data)));
-        //}
+		//function fff(){
+		//    console.log(this.value);
+		//fetch(url)
+		//.then(blob => blob.json())
+		//.then(data => console.log(results.push(...data)));
+		//}
 
-        //searchinput.addEventListener('change', fff);
+		//searchinput.addEventListener('change', fff);
 
+		function encodeUrlString(str)
+		{
+			var base64 = btoa(unescape(encodeURIComponent(str)));
+			return base64.replace('+', '-').replace('/', '_').replace(/=+$/, '');
+		}
 
-        document.getElementById('StreetAddress').addEventListener('input', function (e) {
-            const suggestions = document.getElementById('Suggestions');
-            const input = e.target.value;
-            if (input.length > 2) {
-                fetch('/api:find-address?query=' + input)
-                    .then(response => response.json())
-                    .then(data => {
-                        
-                        suggestions.innerHTML = '';
-                        data.forEach(item => {
-                            const li = document.createElement('li');
-                            li.textContent = item;
-                            suggestions.appendChild(li);
-                        });
-                    });
-            }
-            else
-            {
-                suggestions.innerHTML = '';
-            }
-        });
+		const addr = document.getElementById('StreetAddress');
+		addr.addEventListener('input', function (e)
+		{
+			const suggestions = document.getElementById('Suggestions');
+			const sug = document.getElementById('sug');
+			const input = e.target.value;
+			if (input.length > 2)
+			{
+				fetch('/api:find-address?query=' + input)
+					.then(response => response.json())
+					.then(data =>
+					{
+						if (data.length === 0 || (data.length === 1 && data[0] === ""))
+						{
+							addr.className = '';
+							suggestions.innerHTML = '';
+							sug.style.visibility = 'hidden';
+							return;
+						}
+						addr.className = 'DataHere';
+						suggestions.innerHTML = '';
+						sug.style.visibility = 'visible';
+						data.forEach(item =>
+						{
+							const li = document.createElement('li');
+							li.innerHTML = '<span><svg width="1.5rem" height="1.5rem" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:#020202;stroke-miterlimit:10;stroke-width:1.87px;}</style></defs><path class="cls-1" d="M9.22,21.33S1.75,14.8,1.75,9.2a7.47,7.47,0,1,1,14.93,0"/><polyline class="cls-1" points="20.42 15.73 20.42 22.27 11.08 22.27 11.08 15.73"/><line class="cls-1" x1="15.75" y1="18.53" x2="15.75" y2="22.27"/><circle class="cls-1" cx="9.22" cy="9.2" r="2.8"/><polyline class="cls-1" points="8.75 18.07 15.75 11.07 22.75 18.07"/></svg></span><a href="/StepTwo">' + item + '</a> 🠺';
+							li.innerHTML = '<span><svg width="1.5rem" height="1.5rem" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:#020202;stroke-miterlimit:10;stroke-width:1.91px;}</style></defs><path class="cls-1" d="M18.68,8.18C18.68,13.19,12,19,12,19S5.32,13.19,5.32,8.18a6.68,6.68,0,0,1,13.36,0Z"/><polyline class="cls-1" points="16.52 13.91 19.64 13.91 22.5 22.5 1.5 22.5 4.36 13.91 7.49 13.91"/><polyline class="cls-1" points="13.91 6.75 13.91 11.04 10.09 11.04 10.09 6.75"/><polyline class="cls-1" points="8.18 8.18 12 5.32 15.82 8.18"/></svg></span><a href="/StepTwo">' + item + '</a> 🠺';
+							li.innerHTML = '<a href="/step-two?' + encodeUrlString(item) + '">' + item + '</a><span> 🠺</span>';
+							//li.textContent = item;
+							suggestions.appendChild(li);
+						});
+					});
+			}
+			else
+			{
+				addr.className = '';
+				suggestions.innerHTML = '';
+				sug.style.visibility = 'hidden';
+			}
+		});
 
-    </script>
+	</script>
 
-   @* <script>
+	@* <script>
 
-        window.addEventListener('DOMContentLoaded', function () {
-            // 'local' is the 'id' of input element
-            new Autocomplete('StreetAddress', {
-                onSearch: ({ currentValue }) => {
-                    // local data
-                    const data = [
-                        { name: 'Walter White' },
-                        { name: 'Jesse Pinkman' },
-                        { name: 'Skyler White' },
-                        { name: 'Walter White Jr.' },
-                    ];
-                    return data
-                        .sort((a, b) => a.name.localeCompare(b.name))
-                        .filter((element) => {
-                            return element.name.match(new RegExp(currentValue, 'i'));
-                        });
-                },
+	window.addEventListener('DOMContentLoaded', function () {
+	// 'local' is the 'id' of input element
+	new Autocomplete('StreetAddress', {
+	onSearch: ({ currentValue }) => {
+	// local data
+	const data = [
+	{ name: 'Walter White' },
+	{ name: 'Jesse Pinkman' },
+	{ name: 'Skyler White' },
+	{ name: 'Walter White Jr.' },
+	];
+	return data
+	.sort((a, b) => a.name.localeCompare(b.name))
+	.filter((element) => {
+	return element.name.match(new RegExp(currentValue, 'i'));
+	});
+	},
 
-                onResults: ({ matches }) => {
-                    return matches
-                        .map((el) => {
-                            return `
-                    <li>${el.name}</li>`;
-                        })
-                        .join('');
-                },
-            });
-        });
-    </script>*@
+	onResults: ({ matches }) => {
+	return matches
+	.map((el) => {
+	return `
+	<li>${el.name}</li>`;
+	})
+	.join('');
+	},
+	});
+	});
+	</script>*@
 </div>

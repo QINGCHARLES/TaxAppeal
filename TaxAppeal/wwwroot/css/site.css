@@ -11,10 +11,66 @@ html
 	}
 }
 
-#Suggestions li
+#Suggestions
 {
-list-style: none;
+	padding: 0;
+	margin: 0;
+	fline-height: 1.5rem;
 }
+
+	#Suggestions li
+	{
+		list-style: none;
+		line-height: 1.5rem;
+		height: 2.5rem;
+		white-space: nowrap;
+		ftext-overflow: ellipsis;
+		foverflow: hidden;
+		fmax-width: 30rem;
+		width: 28.5rem;
+	}
+
+
+		#Suggestions li span
+		{
+			position: relative;
+			top: -0.6rem;
+		}
+
+		#Suggestions li a
+		{
+			text-decoration: none;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			height: 2rem;
+			max-width: 29rem;
+			fwidth: 3rem;
+			overflow: hidden;
+			display: inline-block;
+		}
+
+	#Suggestions li
+	{
+		padding-bottom: .5rem;
+		fpadding-top: .5rem;
+	}
+
+		#Suggestions li:last-child
+		{
+			padding-bottom: 2rem;
+		}
+
+		#Suggestions li:not(:last-child)
+		{
+			border-bottom: 1px solid #bbd;
+			padding-bottom: 2.5rem;
+		}
+
+		#Suggestions li:not(:first-child)
+		{
+			padding-bottomf: 2rem;
+			padding-top: .8rem;
+		}
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus
 {
@@ -40,17 +96,63 @@ header
 	color: #fff;
 }
 
-#StreetAddress
+.DataHere
 {
-	fpadding: calc((3rem - (1rem * 1.5) - (0.125rem * 2)) / 2) calc(1rem * 1.5);
-	padding: 1rem 3rem;
+	border-bottom-left-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+	border-bottom: none !important;
+}
+
+	.DataHere:focus
+	{
+	}
+
+h1
+{
+	margin-top: 1rem;
+}
+
+#sug
+{
+	padding: 0rem 3.6rem .5rem;
 	font-size: 1.5rem !important;
 	border-radius: .75rem;
 	width: 35rem;
 	font-weight: bold;
 	border-style: solid;
 	border-width: 0.3rem;
+	border-color: #668;
+	background: #fff;
+	color: #000;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	border-top: none;
+	visibility: hidden;
+	text-align: left;
+	display: inline-block;
+}
+
+#StreetAddress:focus, #StreetAddress:focus + div#sug
+{
 	border-color: #99b;
+}
+
+#StreetAddress
+{
+	outline: none;
+	fpadding: calc((3rem - (1rem * 1.5) - (0.125rem * 2)) / 2) calc(1rem * 1.5);
+	padding: 1rem 3.6rem;
+	font-size: 1.5rem !important;
+	border-radius: .75rem;
+	width: 35rem;
+	font-weight: bold;
+	border-style: solid;
+	border-width: 0.3rem;
+	border-color: #668;
+	background-image: url('/house-searcher-svgrepo-com.svg');
+	background-repeat: no-repeat;
+	background-position: .9rem 1.2rem; /* Adjust this to move the icon */
+	background-size: 2rem; /* Size of the icon */
 }
 
 	#StreetAddress::placeholder
@@ -68,36 +170,37 @@ h1
 {
 	text-transform: uppercase;
 }
+
 label, input[type=button], input[type=submit], button
 {
 	font-weight: bold;
 	font-size: 1.5rem;
 }
 
-	input[type=button], input[type=submit], button
-	{
-		border-radius: .75rem;
-		padding: 1rem 3rem;
-	}
+input[type=button], input[type=submit], button
+{
+	border-radius: .75rem;
+	padding: 1rem 3rem;
+}
 
-	.stars-bg
-	{
-		width: 100%;
-		height: min(130vh, 1200px);
-		position: absolute;
-		top: 0;
-		left: 0;
-		/* pointer-events: none; */
-		overflow: hidden;
-		z-index: -1;
-		background-image: radial-gradient(100% 106% at 50% 171%, #FFFFFF 0%, #000121 100%);
-		background-image: radial-gradient(100% 106% at 51% 176%, rgba(255, 255, 255, 1) 0.4%, rgba(6, 6, 30, 1) 100%);
-		background-image: linear-gradient(180deg, #010103 38.4%, #00107D 59.9%, #3174B1 74.3%, #AAB2BC 85.1%, #BEB3BD 93.8%, #BBADB8 100%);
-		background-image: radial-gradient(100% 100% at 50% 0%, rgba(13, 13, 38, 1) 48.71%, rgba(51, 71, 100, 1) 100%);
-		background-image: linear-gradient(0deg, #DEDEDE 5.3%, #DEDEDE 20.1%, #59A3BD 30.5%, #1C4460 50%, #0B1117 70%); /* 3 */
-		background-image: radial-gradient(147% 89% at 50% 89%, #DEDEDE 5.3%, #DEDEDE 20.1%, #59A3BD 30.5%, #1C4460 50%, #0B1117 70%); /* 1 */
-		background-image: radial-gradient(147% 114% at 50% 103%, #DEDEDE 5.3%, #DEDEDE 20.1%, #59A3BD 30.5%, #1C4460 50%, #0B1117 70%); /* 2 */
-	}
+.stars-bg
+{
+	width: 100%;
+	height: min(130vh, 1200px);
+	position: absolute;
+	top: 0;
+	left: 0;
+	/* pointer-events: none; */
+	overflow: hidden;
+	z-index: -1;
+	background-image: radial-gradient(100% 106% at 50% 171%, #FFFFFF 0%, #000121 100%);
+	background-image: radial-gradient(100% 106% at 51% 176%, rgba(255, 255, 255, 1) 0.4%, rgba(6, 6, 30, 1) 100%);
+	background-image: linear-gradient(180deg, #010103 38.4%, #00107D 59.9%, #3174B1 74.3%, #AAB2BC 85.1%, #BEB3BD 93.8%, #BBADB8 100%);
+	background-image: radial-gradient(100% 100% at 50% 0%, rgba(13, 13, 38, 1) 48.71%, rgba(51, 71, 100, 1) 100%);
+	background-image: linear-gradient(0deg, #DEDEDE 5.3%, #DEDEDE 20.1%, #59A3BD 30.5%, #1C4460 50%, #0B1117 70%); /* 3 */
+	background-image: radial-gradient(147% 89% at 50% 89%, #DEDEDE 5.3%, #DEDEDE 20.1%, #59A3BD 30.5%, #1C4460 50%, #0B1117 70%); /* 1 */
+	background-image: radial-gradient(147% 114% at 50% 103%, #DEDEDE 5.3%, #DEDEDE 20.1%, #59A3BD 30.5%, #1C4460 50%, #0B1117 70%); /* 2 */
+}
 
 	.stars-bg:after
 	{
@@ -151,21 +254,21 @@ header svg
 
 .auto-results-wrapper
 {
-background-color:#000;
-color:#fff;
-}
-
-.auto-results-wrapper ul li
-{
 	background-color: #000;
 	color: #fff;
 }
 
-.auto-results-wrapper ul
-{
-	background-color: #000;
-	color: #fff;
-}
+	.auto-results-wrapper ul li
+	{
+		background-color: #000;
+		color: #fff;
+	}
+
+	.auto-results-wrapper ul
+	{
+		background-color: #000;
+		color: #fff;
+	}
 
 :root
 {
