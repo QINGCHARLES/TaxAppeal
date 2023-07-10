@@ -43,7 +43,7 @@ html
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			height: 2rem;
-			max-width: 29rem;
+			max-width: 22rem;
 			fwidth: 3rem;
 			overflow: hidden;
 			display: inline-block;
@@ -117,7 +117,7 @@ h1
 	padding: 0rem 3.6rem .5rem;
 	font-size: 1.5rem !important;
 	border-radius: .75rem;
-	width: 35rem;
+	width: 28rem;
 	font-weight: bold;
 	border-style: solid;
 	border-width: 0.3rem;
@@ -137,6 +137,16 @@ h1
 	border-color: #99b;
 }
 
+.searching
+{
+	background-image: url("data:image/svg+xml,%0A%3Csvg fill='%23bbb' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E.spinner_I8Q1%7Banimation:spinner_qhi1 .75s linear infinite%7D.spinner_vrS7%7Banimation-delay:-.375s%7D@keyframes spinner_qhi1%7B0%25,100%25%7Br:1.5px%7D50%25%7Br:3px%7D%7D%3C/style%3E%3Ccircle class='spinner_I8Q1' cx='4' cy='12' r='1.5'/%3E%3Ccircle class='spinner_I8Q1 spinner_vrS7' cx='12' cy='12' r='3'/%3E%3Ccircle class='spinner_I8Q1' cx='20' cy='12' r='1.5'/%3E%3C/svg%3E");
+}
+
+.idle
+{
+	background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='iso-8859-1'%3F%3E%3Csvg version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 468.382 468.382' xml:space='preserve'%3E%3Cg%3E%3Cg%3E%3Cpath style='fill:%23bbb;' d='M268.711,35.498c-17.826-17.818-45.967-18.72-65.102-3.13c-1.284,1.04-2.626,1.943-3.82,3.13 L7.142,228.153c-9.527,9.519-9.519,24.963,0,34.481c1.187,1.187,2.479,2.235,3.829,3.129c4.056,2.682,8.738,4.016,13.42,4.016 s9.364-1.341,13.42-4.016c1.349-0.894,1.618-1.935,2.804-3.129l14.883-15.899v111.361c0,49.088,45.422,88.927,96.763,88.927 h171.667c50.316,0,89.219-39.001,89.219-88.927V250.88l12.778,11.762c4.755,4.763,11.51,7.145,17.753,7.145 c6.243,0,12.737-2.382,17.493-7.145c9.527-9.519,9.657-24.963,0.13-34.481L268.711,35.498z M364.377,358.104 c0,23.036-17.021,40.155-40.448,40.155H152.253c-24.483,0-47.991-17.899-47.991-40.155V197.972L232.255,69.987l132.122,132.13 V358.104z'/%3E%3Cpath style='fill:%23bbb;' d='M189.076,238.704c0,12.445,3.211,24.142,8.828,34.343c-0.585,0.471-1.195,0.894-1.731,1.439 l-61.192,62.306c-7.86,8.007-7.747,20.874,0.26,28.743c3.959,3.885,9.104,5.82,14.241,5.82c5.259,0,10.518-2.032,14.501-6.08 l61.192-62.306c0.463-0.48,0.813-1.016,1.219-1.528c10.144,5.536,21.768,8.689,34.116,8.689c39.383,0,71.426-32.043,71.426-71.434 c0-39.383-32.043-71.426-71.426-71.426C221.11,167.278,189.076,199.313,189.076,238.704z M260.502,191.664 c25.938,0,47.04,21.102,47.04,47.04s-21.102,47.048-47.04,47.048c-25.938,0-47.048-21.102-47.048-47.048 C213.461,212.766,234.563,191.664,260.502,191.664z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
 #StreetAddress
 {
 	outline: none;
@@ -144,12 +154,11 @@ h1
 	padding: 1rem 3.6rem;
 	font-size: 1.5rem !important;
 	border-radius: .75rem;
-	width: 35rem;
+	width: 28rem;
 	font-weight: bold;
 	border-style: solid;
 	border-width: 0.3rem;
 	border-color: #668;
-	background-image: url('/house-searcher-svgrepo-com.svg');
 	background-repeat: no-repeat;
 	background-position: .9rem 1.2rem; /* Adjust this to move the icon */
 	background-size: 2rem; /* Size of the icon */
