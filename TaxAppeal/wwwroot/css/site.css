@@ -27,7 +27,7 @@ html
 		ftext-overflow: ellipsis;
 		foverflow: hidden;
 		fmax-width: 30rem;
-		width: 22rem;
+		width: 21rem;
 	}
 
 
@@ -35,6 +35,15 @@ html
 		{
 			position: relative;
 			top: -0.6rem;
+			background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg fill='%230d6efd' viewBox='0 0 32 32' id='Lager_30' data-name='Lager 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Group_9' data-name='Group 9'%3E%3Cpath id='Path_35' data-name='Path 35' d='M14.613,11.413,17.246,14H9.98A1.979,1.979,0,0,0,8,15.98v.04A1.979,1.979,0,0,0,9.98,18h6.963l-.042.26-2.227,2.248a2.091,2.091,0,0,0-.293,2.657,1.973,1.973,0,0,0,3.022.255l6.016-6.074a2.017,2.017,0,0,0,0-2.833l-6-5.934a1.97,1.97,0,0,0-2.806,0A2.016,2.016,0,0,0,14.613,11.413Z' /%3E%3Cpath id='Path_36' data-name='Path 36' d='M0,16A16,16,0,1,0,16,0,16,16,0,0,0,0,16Zm28,0A12,12,0,1,1,16,4,12.013,12.013,0,0,1,28,16Z' /%3E%3C/g%3E%3C/svg%3E");
+			background-repeat: no-repeat;
+			background-position: .4rem 1.0rem; /* Adjust this to move the icon */
+			background-size: 1rem; /* Size of the icon */
+			min-width: 2rem;
+			height: 2rem;
+			width: 2rem;
+			color: #fff;
+			display: inline-block;
 		}
 
 		#Suggestions li a
@@ -43,7 +52,7 @@ html
 			text-overflow: ellipsis;
 			white-space: nowrap;
 			height: 2rem;
-			max-width: 22rem;
+			max-width: 21rem;
 			fwidth: 3rem;
 			overflow: hidden;
 			display: inline-block;
@@ -117,7 +126,7 @@ h1
 	padding: 0rem 3.6rem .5rem;
 	font-size: 1.5rem !important;
 	border-radius: .75rem;
-	width: 28rem;
+	width: 27rem;
 	font-weight: bold;
 	border-style: solid;
 	border-width: 0.3rem;
@@ -180,7 +189,7 @@ h1
 	padding: 1rem 3.6rem;
 	font-size: 1.5rem !important;
 	border-radius: .75rem;
-	width: 28rem;
+	width: 27rem;
 	font-weight: bold;
 	border-style: solid;
 	border-width: 0.3rem;
