@@ -149,7 +149,8 @@ h1
 
 .searching
 {
-	background-image: url("data:image/svg+xml,%0A%3Csvg fill='%23bbb' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E.spinner_I8Q1%7Banimation:spinner_qhi1 .75s linear infinite%7D.spinner_vrS7%7Banimation-delay:-.375s%7D@keyframes spinner_qhi1%7B0%25,100%25%7Br:1.5px%7D50%25%7Br:3px%7D%7D%3C/style%3E%3Ccircle class='spinner_I8Q1' cx='4' cy='12' r='1.5'/%3E%3Ccircle class='spinner_I8Q1 spinner_vrS7' cx='12' cy='12' r='3'/%3E%3Ccircle class='spinner_I8Q1' cx='20' cy='12' r='1.5'/%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml,%3Csvg fill='%23bbb' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle class='spinner_I8Q1' cx='4' cy='12' r='1.5'/%3E%3Ccircle class='spinner_I8Q1 spinner_vrS7' cx='12' cy='12' r='3'/%3E%3Ccircle class='spinner_I8Q1' cx='20' cy='12' r='1.5'/%3E%3Cstyle%3E.spinner_I8Q1%7Banimation:spinner_qhi1 .75s linear infinite%7D.spinner_vrS7%7Banimation-delay:-.375s%7D@keyframes spinner_qhi1%7B0%25,100%25%7Br:1.5px%7D50%25%7Br:3px%7D%7D%3C/style%3E%3C/svg%3E");
+	fbackground-image: url("data:image/svg+xml,%0A%3Csvg fill='%23bbb' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cstyle%3E.spinner_I8Q1%7Banimation:spinner_qhi1 .75s linear infinite%7D.spinner_vrS7%7Banimation-delay:-.375s%7D@keyframes spinner_qhi1%7B0%25,100%25%7Br:1.5px%7D50%25%7Br:3px%7D%7D%3C/style%3E%3Ccircle class='spinner_I8Q1' cx='4' cy='12' r='1.5'/%3E%3Ccircle class='spinner_I8Q1 spinner_vrS7' cx='12' cy='12' r='3'/%3E%3Ccircle class='spinner_I8Q1' cx='20' cy='12' r='1.5'/%3E%3C/svg%3E");
 }
 
 .idle
