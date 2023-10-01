@@ -42,6 +42,18 @@ public class StepTwoModel : PageModel
 
 	public async Task<IActionResult> OnGetAsync()
 	{
+
+//f: json
+//where: 
+//returnGeometry: true
+//spatialRel: esriSpatialRelIntersects
+//geometry: { "points":[[1159715.3926130661,1920915.037456159]],"spatialReference":{ "wkid":3435} }
+//geometryType: esriGeometryMultipoint
+//inSR: 3435
+//outFields: ParcelType,Address,City,Town,NBHD,TotalValue,BldgValue,BLDGClass,BldgSqft,Landvalue,LandSqft,BldgConst,BldgAge,Mlt_IND,Per_Ass,PIN10,PIN14,SV_URL,TAXYR,value_description
+//outSR: 3435
+
+
 		StreetAddress = DecodeUrlString(HttpContext.Request.QueryString.ToString().Replace("?",""));
 
 		using HttpClient client = new()
@@ -52,7 +64,16 @@ public class StepTwoModel : PageModel
 
 		//https://gis.cookcountyil.gov/traditional/rest/services/cookVwrDynmc/MapServer/44/query?where=PIN14%3D%2713154150070000%27&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=Address%2CCity%2CZip_Code&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&featureEncoding=esriDefault&f=pjson
 
-		AddressConfirmation? JsonAddressConfirmation = await client.GetFromJsonAsync<AddressConfirmation>($"/traditional/rest/services/cookVwrDynmc/MapServer/44/query?where=PIN14%3D%27{PropertyPin}%27&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=Address%2CCity%2CZip_Code&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&featureEncoding=esriDefault&f=pjson");
+		// this call converts a street address text to x/y coords for the other functions
+		GisAddressPin? JsonAddress = await client.GetFromJsonAsync<GisAddressPin>($"/traditional/rest/services/AddressLocator/addressPtMuniZip/GeocodeServer/findAddressCandidates?Street={HttpUtility.UrlEncode(StreetAddress)}&f=json");
+
+		// check to see if the street address entered on the form validated to a street address in the county database
+		if (JsonAddress != null && JsonAddress.candidates != null && JsonAddress.candidates.Count > 0)
+		{
+
+		}
+
+			AddressConfirmation? JsonAddressConfirmation = await client.GetFromJsonAsync<AddressConfirmation>($"/traditional/rest/services/cookVwrDynmc/MapServer/44/query?where=PIN14%3D%27{PropertyPin}%27&text=&objectIds=&time=&timeRelation=esriTimeRelationOverlaps&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&distance=&units=esriSRUnit_Foot&relationParam=&outFields=Address%2CCity%2CZip_Code&returnGeometry=true&returnTrueCurves=false&maxAllowableOffset=&geometryPrecision=&outSR=&havingClause=&returnIdsOnly=false&returnCountOnly=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&returnZ=false&returnM=false&gdbVersion=&historicMoment=&returnDistinctValues=false&resultOffset=&resultRecordCount=&returnExtentOnly=false&sqlFormat=none&datumTransformation=&parameterValues=&rangeValues=&quantizationParameters=&featureEncoding=esriDefault&f=pjson");
 
 		if (JsonAddressConfirmation == null)
 		{
