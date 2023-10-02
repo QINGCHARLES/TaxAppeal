@@ -3,14 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics;
 using System.Reflection.PortableExecutable;
-using PdfSharp;
-using PdfSharp.Pdf.IO;
-using PdfSharp.Pdf;
-using PdfSharp.Pdf.AcroForms;
+
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
-using PdfSharp.Pdf.Advanced;
+
 using System.Linq;
+using PdfSharpCore;
+using PdfSharpCore.Pdf;
+using PdfSharpCore.Pdf.IO;
+using PdfSharpCore.Pdf.AcroForms;
+using PdfSharpCore.Pdf.Advanced;
+
 
 namespace TaxAppeal.Pages
 {
@@ -183,7 +186,7 @@ namespace TaxAppeal.Pages
 			// Field: Township
 			fields["Township"].Value = new PdfString(Town);
 
-			fields["PIN 1"].Value = new PdfString(Pin14);
+			fields["1"].Value = new PdfString(Pin14);
 
 			// Save the modified PDF to a new file
 			pdf.Save(pdfPathb);
