@@ -4,11 +4,14 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
+using System.Text;
 using System.Web;
 using TaxAppeal.Data;
 using TaxAppeal.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
 builder.Host.UseSystemd();
 
