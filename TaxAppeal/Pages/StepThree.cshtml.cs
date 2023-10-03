@@ -39,7 +39,7 @@ namespace TaxAppeal.Pages
 
 			stuff = Address;
 
-			return Page();
+			//return Page();
 
 			string[] stuffparts = Address.Split("||");
 
@@ -55,7 +55,7 @@ namespace TaxAppeal.Pages
 
 
 			string pdfPath = Path.Combine(_webHostEnvironment.WebRootPath, "resform.pdf");
-			string pdfPathb = Path.Combine(_webHostEnvironment.WebRootPath, "resformb.pdf");
+			string pdfPathb = Path.Combine(_webHostEnvironment.WebRootPath, Guid.NewGuid().ToString() + ".pdf");
 
 			// Open an existing document. Providing an unopened PdfDocument is important.
 			PdfDocument pdf = PdfReader.Open(pdfPath, PdfDocumentOpenMode.Modify);
@@ -203,7 +203,7 @@ namespace TaxAppeal.Pages
 
 			// ... and so on ...
 
-			pdf.Save(pdfPathb);
+			//pdf.Save(pdfPathb);
 			//Process.Start("d:\\resout.pdf");
 
 			return Redirect("/resformb.pdf");
