@@ -61,7 +61,7 @@
 			{
 				if (input.length > 2)
 				{
-					addr.className = addr.className == 'DataHere idle' ? 'DataHere searching' : 'searching';
+					addr.className = addr.className == 'DataHere idle AddressFinder' ? 'DataHere searching AddressFinder' : 'searching AddressFinder';
 
 					fetch('/api:find-address?query=' + input)
 						.then(response => response.json())

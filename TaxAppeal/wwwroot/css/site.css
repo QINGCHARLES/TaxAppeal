@@ -188,7 +188,7 @@ input[type=text]
 	display: block;
 	outline: none;
 	fpadding: calc((3rem - (1rem * 1.5) - (0.125rem * 2)) / 2) calc(1rem * 1.5);
-	padding: 1rem 3.6rem;
+	padding: 1rem 1rem;
 	font-size: 1.5rem !important;
 	border-radius: .75rem;
 	width: 25rem;
@@ -204,12 +204,13 @@ input[type=text]
 .AddressFinder
 {
 	margin: auto;
+	padding: 1rem 3.6rem;
 }
 
-	#StreetAddress::placeholder
-	{ /* Chrome, Firefox, Opera, Safari 10.1+ */
-		color: #bbb;
-	}
+input[type=text]::placeholder
+{ /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: #bbb;
+}
 
 
 /* Medium devices (tablets, 768px and up), screen-only */
