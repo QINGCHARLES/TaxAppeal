@@ -182,13 +182,19 @@ h1
 	/* Insert CSS rules here */
 }
 
+input[type=text].AddressFinder
+{
+	margin: auto;
+	padding: 1rem 3.6rem;
+}
+
 input[type=text]
 {
 	fmargin: auto;
 	display: block;
 	outline: none;
 	fpadding: calc((3rem - (1rem * 1.5) - (0.125rem * 2)) / 2) calc(1rem * 1.5);
-	padding: 1rem 1rem;
+	padding: 0.5rem 1rem;
 	font-size: 1.5rem !important;
 	border-radius: .75rem;
 	width: 25rem;
@@ -201,22 +207,22 @@ input[type=text]
 	background-size: 2rem; /* Size of the icon */
 }
 
-.AddressFinder
-{
-	margin: auto;
-	padding: 1rem 3.6rem;
-}
+
 
 input[type=text]::placeholder
 { /* Chrome, Firefox, Opera, Safari 10.1+ */
 	color: #bbb;
 }
 
+.PrimaryButton
+{
+	background: #0f0;
+}
 
 /* Medium devices (tablets, 768px and up), screen-only */
 @media screen and (min-width: 768px)
 {
-	#StreetAddress
+	#StreetAddress, #Name
 	{
 		width: 35rem;
 	}

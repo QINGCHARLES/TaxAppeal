@@ -5,17 +5,18 @@
 <h1>Enter your details</h1>
 
 <form method="post">
-	<label asp-for="Name">Your name:</label>
-	<input class="fidle" asp-for="Name" autocomplete="off" placeholder="e.g. John Smith" />
+	<input class="fidle" asp-for="Name" autocomplete="off" placeholder="Your full name" />
+	<br />
+	<input class="fidle" asp-for="Email" autocomplete="off" placeholder="Email address" />
+	<br />
+	<input class="fidle" asp-for="Phone" autocomplete="off" placeholder="Phone number" />
 	<br />
 	<label asp-for="StreetAddress">Enter the first line of your street address:</label>
 	<input class="fidle" asp-for="StreetAddress" autocomplete="off" placeholder="e.g. 4128 N Tripp Ave" />
 	<br />
-	<label asp-for="City">City:</label>
-	<input class="fidle" asp-for="City" autocomplete="off" placeholder="e.g. Chicago" />
+	<input class="fidle" asp-for="City" autocomplete="off" placeholder="City" />
 	<br />
-	<label asp-for="ZipCode">Zip Code:</label>
-	<input class="fidle" asp-for="ZipCode" autocomplete="off" placeholder="e.g. 60641" />
+	<input class="fidle" asp-for="ZipCode" autocomplete="off" placeholder="Zip code" />
 	<br />
-	<button asp-page-handler="Cancel"><< Back</button> <button asp-page-handler="Confirm">Next >></button>
+	<button asp-page-handler="Cancel">← Back</button> <button class="PrimaryButton" asp-page-handler="Confirm">Next →</button>
 </form>

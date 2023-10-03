@@ -18,7 +18,14 @@ public class StepTwoModel : PageModel
 	public string? City { get; set; }
 	public string? ZipCode { get; set; }
 
+	[BindProperty]
 	public string? Name { get; set; }
+	
+	[BindProperty] 
+	public string? Email { get; set; }
+	
+	[BindProperty]
+	public string? Phone { get; set; }
 
 
 	public IActionResult OnPostCancel()
@@ -29,6 +36,18 @@ public class StepTwoModel : PageModel
 	public IActionResult OnPostConfirm()
 	{
 		string Data = TempData["Data"].ToString();
+		string[] DataParts = Data.Split("||", StringSplitOptions.TrimEntries);
+
+		string[] parts = DataParts[0].Split(new string[] { "," }, StringSplitOptions.TrimEntries);
+
+		string Line1 = parts[0];
+		string City = parts[^3];
+		string State = parts[^2];
+		string Zip = parts[^1];
+		string Town = DataParts[1];
+		string Pin14 = DataParts[2];
+
+		Data = Line1 + "||" + City + "||" + State + "||" + Zip + "||" + (string.IsNullOrEmpty(Email) ? "john@example.com" : Email) + "||" + (string.IsNullOrEmpty(Name) ? "John Example Smith" : Name) + "||" + (string.IsNullOrEmpty(Phone) ? "(773) 555-5555" : Phone) + "||" + Town + "||" + Pin14;
 		string urlSafeEncoded = Convert.ToBase64String(Encoding.UTF8.GetBytes(Data)).Replace('+', '-').Replace('/', '_').TrimEnd('=');
 
 		return Redirect($"/step-three?data={urlSafeEncoded}");
@@ -62,7 +81,17 @@ public class StepTwoModel : PageModel
 //outSR: 3435
 
 
-		StreetAddress = DecodeUrlString(HttpContext.Request.QueryString.ToString().Replace("?",""));
+		string QueryString = DecodeUrlString(HttpContext.Request.QueryString.ToString().Replace("?",""));
+
+		string[] parts = QueryString.Split(new string[] { "," }, StringSplitOptions.TrimEntries);
+
+		string Line1 = parts[0];
+		City = parts[^3];
+		string State = parts[^2];
+		ZipCode = parts[^1];
+
+
+		StreetAddress = Line1;
 
 		using HttpClient client = new()
 		{
@@ -87,7 +116,7 @@ public class StepTwoModel : PageModel
 		string? Town = JsonGisPin!.features![0]!.attributes!.Town;
 		string? PIN14 = JsonGisPin!.features![0]!.attributes!.PIN14;
 
-		Data += StreetAddress + "||" + Town + "||" + PIN14;
+		Data += QueryString + "||" + Town + "||" + PIN14;
 		TempData["Data"] = Data;
 
 
@@ -102,10 +131,10 @@ public class StepTwoModel : PageModel
 			string ff = "";
 			foreach (Feature feature in JsonAddressConfirmation.features!)
 			{
-				StreetAddress += feature.attributes!.Address;
-				City = feature.attributes!.City;
-				ZipCode = feature.attributes!.Zip_Code;
-				Data += StreetAddress + "||" + feature.attributes!.Town;
+				//StreetAddress += feature.attributes!.Address;
+				//City = feature.attributes!.City;
+				//ZipCode = feature.attributes!.Zip_Code;
+				//Data += StreetAddress + "||" + feature.attributes!.Town;
 				}
 		}
 

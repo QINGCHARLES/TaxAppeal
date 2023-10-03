@@ -40,9 +40,15 @@ namespace TaxAppeal.Pages
 
 			string[] stuffparts = Address.Split("||");
 
-			string[] AddressParts = stuffparts[0].Split(",");
-			string Town = stuffparts[1];
-			string Pin14 = stuffparts[2];
+			//string[] AddressParts = stuffparts[0].Split(",");
+			string Line1 = stuffparts[0];
+			string City = stuffparts[1];
+			string Zip = stuffparts[3];
+			string Email = stuffparts[4];
+			string TaxpayerName = stuffparts[5];
+			string Phone = stuffparts[6];
+			string Town = stuffparts[7];
+			string Pin14 = stuffparts[8];
 
 
 			string pdfPath = Path.Combine(_webHostEnvironment.WebRootPath, "resform.pdf");
@@ -151,37 +157,37 @@ namespace TaxAppeal.Pages
 			}
 
 			// Field: Name of Taxpayer
-			fields["Name of Taxpayer"].Value = new PdfString("John Smith");
+			fields["Name of Taxpayer"].Value = new PdfString(TaxpayerName);
 
 			// Field: Taxpayer Address
-			fields["Taxpayer Address"].Value = new PdfString(AddressParts[0]);
+			fields["Taxpayer Address"].Value = new PdfString(Line1);
 
 			// Field: Email
-			fields["Email"].Value = new PdfString("john.smith@example.com");
+			fields["Email"].Value = new PdfString(Email);
 
 			// Field: City
-			fields["City"].Value = new PdfString(AddressParts[1]);
+			fields["City"].Value = new PdfString(City);
 
 			// Field: State
 			fields["State"].Value = new PdfString("IL");
 
 			// Field: Taxpayer Zip Code
-			fields["Taxpayer Zip Code"].Value = new PdfString(AddressParts[3]);
+			fields["Taxpayer Zip Code"].Value = new PdfString(Zip);
 
 			//fields["Current Year Appeal Only"].Value = new PdfName("Yes"); // Checked
 			//fields["Current Year & C of E"].Value = new PdfName("Off");  // Unchecked
 
 			// Field: Phone
-			fields["Phone"].Value = new PdfString("555-1234");
+			fields["Phone"].Value = new PdfString(Phone);
 
 			// Field: Section 1 Other
 			fields["Section 1 Other"].Value = new PdfString("N/A");
 
 			// Field: Street Address
-			fields["Street Address"].Value = new PdfString(AddressParts[0]);
+			fields["Street Address"].Value = new PdfString(Line1);
 
 			// Field: City_2
-			fields["City_2"].Value = new PdfString(AddressParts[1]);
+			fields["City_2"].Value = new PdfString(City);
 
 			// Field: Township
 			fields["Township"].Value = new PdfString(Town);
