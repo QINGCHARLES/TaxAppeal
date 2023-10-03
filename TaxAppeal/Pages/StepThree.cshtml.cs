@@ -34,9 +34,12 @@ namespace TaxAppeal.Pages
 
 		public IActionResult OnGet()
         {
+			
 			Address = Encoding.UTF8.GetString(Convert.FromBase64String(Address64.Replace('-', '+').Replace('_', '/') + new string('=', (4 - Address64.Length % 4) % 4)));
 
 			stuff = Address;
+
+			return Page();
 
 			string[] stuffparts = Address.Split("||");
 
