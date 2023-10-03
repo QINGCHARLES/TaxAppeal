@@ -2,8 +2,17 @@
 @model TaxAppeal.Pages.StepTwoModel
 @{
 }
-<h1>Is this your address?</h1>
-<h2>@Model.StreetAddress<br />@*@Model.City, IL @Model.ZipCode*@</h2>
+<h1>Enter your details</h1>
+
 <form method="post">
-	<button asp-page-handler="Cancel"><< No</button><button asp-page-handler="Confirm">Yes >></button>
+	<label asp-for="Name">Your name:</label><br /><br />
+	<input class="fidle" asp-for="Name" autocomplete="off" placeholder="e.g. John Smith" />
+	<label asp-for="StreetAddress">Enter the first line of your street address:</label><br /><br />
+	<input class="fidle" asp-for="StreetAddress" autocomplete="off" placeholder="e.g. 4128 N Tripp Ave" />
+	<label asp-for="City">City:</label><br /><br />
+	<input class="fidle" asp-for="City" autocomplete="off" placeholder="e.g. Chicago" />
+	<label asp-for="ZipCode">Zip Code:</label><br /><br />
+	<input class="fidle" asp-for="ZipCode" autocomplete="off" placeholder="e.g. 60641" />
+
+	<button asp-page-handler="Cancel"><< Back</button><button asp-page-handler="Confirm">Next >></button>
 </form>

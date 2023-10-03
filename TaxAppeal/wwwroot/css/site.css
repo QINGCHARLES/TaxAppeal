@@ -182,9 +182,9 @@ h1
 	/* Insert CSS rules here */
 }
 
-#StreetAddress
+input[type=text]
 {
-	margin: auto;
+	fmargin: auto;
 	display: block;
 	outline: none;
 	fpadding: calc((3rem - (1rem * 1.5) - (0.125rem * 2)) / 2) calc(1rem * 1.5);
@@ -199,6 +199,11 @@ h1
 	background-repeat: no-repeat;
 	background-position: .9rem 1.2rem; /* Adjust this to move the icon */
 	background-size: 2rem; /* Size of the icon */
+}
+
+.AddressFinder
+{
+	margin: auto;
 }
 
 	#StreetAddress::placeholder

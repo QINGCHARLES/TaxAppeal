@@ -13,7 +13,7 @@
 	<br />
 	<form method="post">
 		<label asp-for="StreetAddress">Enter the first line of your street address:</label><br /><br />
-		<input class="idle" asp-for="StreetAddress" autocomplete="off" placeholder="e.g. 4128 N Tripp Ave" />
+		<input class="idle AddressFinder" asp-for="StreetAddress" autocomplete="off" placeholder="e.g. 4128 N Tripp Ave" />
 		<div id="sug"><ul id="Suggestions"></ul></div>
 
 		@*<button type="submit">Start >></button>*@
@@ -70,12 +70,12 @@
 							//addr.style.backgroundImage = 'url(\'/house-searcher-svgrepo-com.svg\')';
 							if (data.length === 0 || (data.length === 1 && data[0] === ""))
 							{
-								addr.className = 'idle';
+								addr.className = 'idle AddressFinder';
 								suggestions.innerHTML = '';
 								sug.style.visibility = 'hidden';
 								return;
 							}
-							addr.className = 'DataHere idle';
+							addr.className = 'DataHere idle AddressFinder';
 							suggestions.innerHTML = '';
 							sug.style.visibility = 'visible';
 							data.forEach(item =>
@@ -90,7 +90,7 @@
 				}
 				else
 				{
-					addr.className = 'idle';
+					addr.className = 'idle AddressFinder';
 					suggestions.innerHTML = '';
 					sug.style.visibility = 'hidden';
 				}
