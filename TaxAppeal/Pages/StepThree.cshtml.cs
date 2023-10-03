@@ -53,9 +53,9 @@ namespace TaxAppeal.Pages
 			string Town = stuffparts[7];
 			string Pin14 = stuffparts[8];
 
-
+			string guidfile = Guid.NewGuid().ToString() + ".pdf";
 			string pdfPath = Path.Combine(_webHostEnvironment.WebRootPath, "resform.pdf");
-			string pdfPathb = Path.Combine(_webHostEnvironment.WebRootPath, Guid.NewGuid().ToString() + ".pdf");
+			string pdfPathb = Path.Combine(_webHostEnvironment.WebRootPath, guidfile);
 
 			// Open an existing document. Providing an unopened PdfDocument is important.
 			PdfDocument pdf = PdfReader.Open(pdfPath, PdfDocumentOpenMode.Modify);
@@ -206,7 +206,7 @@ namespace TaxAppeal.Pages
 			//pdf.Save(pdfPathb);
 			//Process.Start("d:\\resout.pdf");
 
-			return Redirect("/resformb.pdf");
+			return Redirect("/" + guidfile);
 		}
 	}
 }
