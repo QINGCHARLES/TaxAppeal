@@ -1,0 +1,55 @@
+﻿@page
+@model TaxAppeal.Pages.StepFourModel
+@{
+}
+<div class="gridwrap">
+	<div fclass="text-center">
+		<h1>Your relationship to<br />the property</h1>
+		<br />
+		<form method="post">
+			<div class="chunky-radio">
+				<input type="radio" id="option1" name="option" />
+				<label for="option1">I'm the owner</label>
+			</div>
+			<div class="chunky-radio">
+				<input type="radio" id="option2" name="option" />
+				<label for="option2">I'm a former owner liable for the tax</label>
+			</div>
+			<div class="chunky-radio">
+				<input type="radio" id="option4" name="option" />
+				<label for="option4">I'm a tenant liable for the tax</label>
+			</div>
+			<div class="chunky-radio">
+				<input type="radio" id="option5" name="option" />
+				<label for="option5">I'm an executor</label>
+			</div>
+			<div class="chunky-radio">
+				<input type="radio" id="option3" name="option" />
+				<label for="option3">I'm the beneficiary of a trust</label>
+			</div>
+			<div class="chunky-radio">
+				<input type="radio" id="optionOther" name="option" />
+				<label for="optionOther" class="other-label">
+					
+					<div class="other-textbox">
+						<input type="text" id="otherText" />
+					</div>
+				</label>
+			</div>
+
+
+			<div class="twobuttons">
+				<button class="button secondary-button" asp-page-handler="Cancel"> Back</button> <button class="button primary-button" asp-page-handler="Confirm">Next </button>
+			</div>
+		</form>
+		<br /><br />
+		<p> </p>
+		---
+	</div>
+	<div class="hero-image herob">
+	</div>
+</div>
+
+
+
+

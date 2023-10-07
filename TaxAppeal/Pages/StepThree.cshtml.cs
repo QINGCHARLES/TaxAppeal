@@ -19,6 +19,22 @@ namespace TaxAppeal.Pages
 {
     public class StepThreeModel : PageModel
 	{
+		[BindProperty(Name = "pin", SupportsGet = true)]
+		public string? PropertyPin { get; set; }
+
+		public string? StreetAddress { get; set; }
+		public string? City { get; set; }
+		public string? ZipCode { get; set; }
+
+		[BindProperty]
+		public string? Name { get; set; }
+
+		[BindProperty]
+		public string? Email { get; set; }
+
+		[BindProperty]
+		public string? Phone { get; set; }
+
 		[BindProperty(Name = "data", SupportsGet = true)]
 		public string? Address64 { get; set; }
 		private string Address = "";
@@ -32,9 +48,14 @@ namespace TaxAppeal.Pages
 			_webHostEnvironment = webHostEnvironment;
 		}
 
+		public IActionResult OnPost()
+		{
+			return Redirect("/step-four?");
+		}
+
 		public IActionResult OnGet()
         {
-			
+			return Page();
 			Address = Encoding.UTF8.GetString(Convert.FromBase64String(Address64.Replace('-', '+').Replace('_', '/') + new string('=', (4 - Address64.Length % 4) % 4)));
 
 			stuff = Address;
@@ -196,6 +217,8 @@ namespace TaxAppeal.Pages
 			fields["Township"].Value = new PdfString(Town);
 
 			fields["1"].Value = new PdfString(Pin14);
+
+			pdf.Pages[0].Orientation = PageOrientation.Portrait;
 
 			// Save the modified PDF to a new file
 			pdf.Save(pdfPathb);

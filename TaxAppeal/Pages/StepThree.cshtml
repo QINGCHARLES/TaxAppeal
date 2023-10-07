@@ -2,5 +2,34 @@
 @model TaxAppeal.Pages.StepThreeModel
 @{
 }
-<h1>Thank you. The end. For now.</h1>
-<p>@Model.stuff</p>
+<div class="gridwrap">
+	<div fclass="text-center">
+		<h1>Enter your<br />personal details</h1>
+		<br />
+		<form method="post">
+
+
+			<div class="input-wrapper">
+				<label for="Name">Taxpayer full name</label>
+				<input asp-for="Name" placeholder="Taxpayer full name" />
+			</div>
+			<br />
+			<div class="input-wrapper">
+				<label for="Email">Email address</label>
+				<input type="email" asp-for="Email" autocomplete="off" placeholder="Email address" />
+			</div>
+			<br />
+			<div class="input-wrapper">
+				<label for="Phone">Phone number</label>
+				<input type="tel" asp-for="Phone" autocomplete="off" placeholder="Phone number" />
+			</div>
+			<br />
+
+			<div class="twobuttons">
+				<button class="button secondary-button" asp-page-handler="Cancel"> Back</button> <button class="button primary-button" asp-page-handler="Confirm">Next </button>
+			</div>
+		</form>
+	</div>
+	<div class="hero-image herob">
+	</div>
+</div>

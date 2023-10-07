@@ -2,21 +2,41 @@
 @model TaxAppeal.Pages.StepTwoModel
 @{
 }
-<h1>Enter your details</h1>
 
-<form method="post">
-	<input class="fidle" asp-for="Name" autocomplete="off" placeholder="Your full name" />
-	<br />
-	<input class="fidle" asp-for="Email" autocomplete="off" placeholder="Email address" />
-	<br />
-	<input class="fidle" asp-for="Phone" autocomplete="off" placeholder="Phone number" />
-	<br />
-	<label asp-for="StreetAddress">Enter the first line of your street address:</label>
-	<input class="fidle" asp-for="StreetAddress" autocomplete="off" placeholder="e.g. 4128 N Tripp Ave" />
-	<br />
-	<input class="fidle" asp-for="City" autocomplete="off" placeholder="City" />
-	<br />
-	<input class="fidle" asp-for="ZipCode" autocomplete="off" placeholder="Zip code" />
-	<br />
-	<button asp-page-handler="Cancel">← Back</button> <button class="PrimaryButton" asp-page-handler="Confirm">Next →</button>
-</form>
+
+<div class="gridwrap">
+	<div fclass="text-center">
+		<h1>Confirm your<br />property address</h1>
+		<br />
+		<b>This is the address of the property you wish to appeal the taxes for.</b>
+		<br /><br />
+		<form method="post">
+
+@*			<div class="input-wrapper">
+				<label for="first">Your full name</label>
+				<input type="text" placeholder="Your full name">
+			</div>
+			<br />
+			<input class="fidle" asp-for="Name" autocomplete="off" placeholder="Your full name" />
+			<br />
+			<input class="fidle" type="email" asp-for="Email" autocomplete="off" placeholder="Email address" />
+			<br />
+			<input class="fidle" type="tel" asp-for="Phone" autocomplete="off" placeholder="Phone number" />
+			<br />*@
+			@*<label asp-for="StreetAddress">Confirm property address</label>*@
+			<input class="fidle" asp-for="StreetAddress" autocomplete="off" placeholder="e.g. 4128 N Tripp Ave" />
+			<br />
+			<div class="stategrid">
+				<input class="fidle" asp-for="City" autocomplete="off" placeholder="City" /><select class="statedrop" disabled><option>IL</option></select>
+			</div>
+			<br />
+			<input class="zipcodebox" asp-for="ZipCode" autocomplete="off" placeholder="Zip code" />
+			<br />
+			<div class="twobuttons">
+			<button class="button secondary-button" asp-page-handler="Cancel"> Back</button> <button class="button primary-button" asp-page-handler="Confirm">Next </button>
+			</div>
+		</form>
+	</div>
+	<div class="hero-image herob">
+	</div>
+</div>
