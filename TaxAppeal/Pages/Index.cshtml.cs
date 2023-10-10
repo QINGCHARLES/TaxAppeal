@@ -8,6 +8,7 @@ using System.Text.Json;
 using TaxAppeal.Models;
 using System.Globalization;
 using System.Text.Encodings.Web;
+using System.Text;
 
 namespace TaxAppeal.Pages;
 
@@ -31,6 +32,26 @@ public class IndexModel : PageModel
 
 	//https://gis.cookcountyil.gov/traditional/rest/services/cookVwrDynmc/MapServer/44/query?f=json&where=&returnGeometry=true&spatialRel=esriSpatialRelIntersects&geometry={"points":[[1147343.1412663457,1927226.7877129088]],"spatialReference":{"wkid":3435}}&geometryType=esriGeometryMultipoint&inSR=3435&outFields=ParcelType,Address,City,Town,NBHD,TotalValue,BldgValue,BLDGClass,BldgSqft,Landvalue,LandSqft,BldgConst,BldgAge,Mlt_IND,Per_Ass,PIN10,PIN14,SV_URL,TAXYR,value_description&outSR=3435
 
+	public IActionResult OnPostConfirm()
+	{
+		//string Data = TempData["Data"].ToString();
+		//string[] DataParts = Data.Split("||", StringSplitOptions.TrimEntries);
+
+		//string[] parts = DataParts[0].Split(new string[] { "," }, StringSplitOptions.TrimEntries);
+
+		//string Line1 = parts[0];
+		//string City = parts[^3];
+		//string State = parts[^2];
+		//string Zip = parts[^1];
+		//string Town = DataParts[1];
+		//string Pin14 = DataParts[2];
+
+		//Data = Line1 + "||" + City + "||" + State + "||" + Zip + "||" + (string.IsNullOrEmpty(Email) ? "john@example.com" : Email) + "||" + (string.IsNullOrEmpty(Name) ? "John Example Smith" : Name) + "||" + (string.IsNullOrEmpty(Phone) ? "(773) 555-5555" : Phone) + "||" + Town + "||" + Pin14;
+		//string urlSafeEncoded = Convert.ToBase64String(Encoding.UTF8.GetBytes(Data)).Replace('+', '-').Replace('/', '_').TrimEnd('=');
+
+		//return Redirect($"/step-three?data={urlSafeEncoded}");
+		return Redirect($"/find-property");
+	}
 
 	public async Task<IActionResult> OnPost()
 	{

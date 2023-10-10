@@ -58,6 +58,30 @@ using (TextReader sr = new StringReader(@$"
 					<action type=""Redirect"" url=""https://cookcountypropertytaxappeal.com/{{R:1}}"" redirectType=""308"" />
 				</rule>
 				<rule enabled=""true"">
+					<match url=""^appeal-reason"" />
+					<action type=""Rewrite"" url=""https://{{HTTP_HOST}}/AppealReason"" />
+				</rule>
+				<rule enabled=""true"">
+					<match url=""^select-years"" />
+					<action type=""Rewrite"" url=""https://{{HTTP_HOST}}/SelectYears"" />
+				</rule>
+				<rule enabled=""true"">
+					<match url=""^personal-details"" />
+					<action type=""Rewrite"" url=""https://{{HTTP_HOST}}/PersonalDetails"" />
+				</rule>
+				<rule enabled=""true"">
+					<match url=""^property-relationship"" />
+					<action type=""Rewrite"" url=""https://{{HTTP_HOST}}/PropertyRelationship"" />
+				</rule>
+				<rule enabled=""true"">
+					<match url=""^confirm-property"" />
+					<action type=""Rewrite"" url=""https://{{HTTP_HOST}}/ConfirmProperty"" />
+				</rule>
+				<rule enabled=""true"">
+					<match url=""^find-property"" />
+					<action type=""Rewrite"" url=""https://{{HTTP_HOST}}/FindProperty"" />
+				</rule>
+				<rule enabled=""true"">
 					<match url=""^step-four"" />
 					<action type=""Rewrite"" url=""https://{{HTTP_HOST}}/StepFour"" />
 				</rule>

@@ -132,6 +132,7 @@ header
 h1
 {
 	margin-top: 1rem;
+	text-transform: uppercase;
 }
 
 #sug
@@ -360,10 +361,19 @@ input.zipcodebox
 		content: "→";
 	}
 
-	.primary-button:hover::after
+	.primary-button:not([disabled]):hover::after
 	{
 		content: "⇒";
 	}
+
+
+	.primary-button[disabled]
+	{
+		border-color: #eee;
+		color: #777;
+		background: #eee;
+	}
+
 
 .secondary-button
 {
@@ -395,6 +405,22 @@ input.zipcodebox
 	justify-content: space-between;
 }
 
+
+
+input[type="checkbox"]
+{
+	cursor: pointer;
+
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+h3
+{
+	color: grey;
+	font-size: 1rem;
+}
+
 /* Container for each radio button */
 .chunky-radio
 {
@@ -407,17 +433,30 @@ input.zipcodebox
 	position: relative;
 }
 
+
+
+
 	/* Style for the actual radio input */
-	.chunky-radio input[type="radio"]
+	.chunky-radio input[type="radio"], .chunky-radio input[type="checkbox"]
 	{
 		margin-right: 1rem;
 		position: absolute;
 		left: 1rem;
-		top: 50%;
-		transform: translateY(-50%);
+		top: 1.5rem;
+		ftop: 50%;
+		ftransform: translateY(-100%);
 		z-index: 1;
 		opacity: 1;
 	}
+	.chunky-radio input[type="radio"]
+	{
+		top: 1.95rem;
+	}
+
+		.chunky-radio.chunky-check label
+		{
+			padding-left: 3.5rem;
+		}
 
 	/* Style for the label */
 	.chunky-radio label
@@ -477,8 +516,13 @@ input.zipcodebox
 	display: none;
 	width: 100%;
 	margin-top: 0.5rem;
+
 }
 
+	.other-textbox input
+	{
+		border-color: #9bd;
+	}
 
 
 .chunky-radio input[type="radio"]:not(:checked) + .other-label::before

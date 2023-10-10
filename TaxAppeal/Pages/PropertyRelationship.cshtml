@@ -1,0 +1,89 @@
+﻿@page
+@model TaxAppeal.Pages.PropertyRelationshipModel
+@{
+}
+<div class="gridwrap">
+	<div fclass="text-center">
+		<h1>Your relationship to<br />the property</h1>
+		<br />
+		<form method="post">
+			<div class="chunky-radio">
+				<input type="radio" id="option1" name="option" />
+				<label for="option1">I'm the owner</label>
+			</div>
+			<div class="chunky-radio">
+				<input type="radio" id="option2" name="option" />
+				<label for="option2">I'm a former owner liable for the tax</label>
+			</div>
+			<div class="chunky-radio">
+				<input type="radio" id="option4" name="option" />
+				<label for="option4">I'm a tenant liable for the tax</label>
+			</div>
+			<div class="chunky-radio">
+				<input type="radio" id="option5" name="option" />
+				<label for="option5">I'm an executor of a will</label>
+			</div>
+			<div class="chunky-radio">
+				<input type="radio" id="option3" name="option" />
+				<label for="option3">I'm the beneficiary of a trust</label>
+			</div>
+			<div class="chunky-radio">
+				<input type="radio" id="optionOther" name="option" />
+				<label for="optionOther" class="other-label">
+
+					<div class="other-textbox">
+						<input type="text" id="otherText" />
+					</div>
+				</label>
+			</div>
+
+
+			<div class="twobuttons">
+				<button class="button secondary-button" asp-page-handler="Cancel"> Back</button> <button class="button primary-button" id="next-button" asp-page-handler="Confirm">Next </button>
+			</div>
+		</form>
+		<br /><br />
+		<p> </p>
+		---
+	</div>
+	<div class="hero-image herob">
+	</div>
+</div>
+<script type="text/javascript">
+	// Get a reference to the button
+	var nextButton = document.getElementById('next-button');
+
+	// Function to check the state of the radio buttons and enable/disable the button
+	function checkRadioButtons()
+	{
+		// Get all unique names of radio buttons on the page
+		var radios = document.querySelectorAll('input[type="radio"]');
+		var names = new Set();
+		radios.forEach(function (radio)
+		{
+			names.add(radio.name);
+		});
+
+		// Check if at least one radio button in each group is checked
+		var allChecked = Array.from(names).every(function (name)
+		{
+			return Array.from(document.getElementsByName(name)).some(function (radio)
+			{
+				return radio.checked;
+			});
+		});
+
+		// Enable or disable the nextButton based on the checks
+		nextButton.disabled = !allChecked;
+	}
+
+	// Get all radio buttons and add event listeners for the change event
+	var radios = document.querySelectorAll('input[type="radio"]');
+	radios.forEach(function (radio)
+	{
+		radio.addEventListener('change', checkRadioButtons);
+	});
+
+	// Call checkRadioButtons initially to set the initial state of the button
+	checkRadioButtons();
+</script>
